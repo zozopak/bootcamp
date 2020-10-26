@@ -13,7 +13,7 @@ public class Student  {
     private  Course course;
     private  Teacher teacher;
     private List<Observer>observers=new ArrayList<>();
-    public Student(String name, String family, int student_number, Course course, Teacher teacher) {
+    public Student(String name, String family, int student_number) {
         this.name = name;
         this.family = family;
         this.student_number = student_number;

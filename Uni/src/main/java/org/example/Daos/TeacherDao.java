@@ -25,8 +25,8 @@ public class TeacherDao implements Repository<Teacher,Long> {
     }
 
     @Override
-    public Teacher save(Long aLong) {
-        return null;
+    public void save(Teacher teacher) {
+       
     }
 
     @Override
