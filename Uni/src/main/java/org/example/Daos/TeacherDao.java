@@ -8,12 +8,12 @@ import java.sql.Connection;
 import java.util.List;
 
 public class TeacherDao implements Repository<Teacher,Long> {
+ private Connection connection;
 
-    private Connection connection ;
-
-    TeacherDao(Connection connection){
-        this.connection=connection;
+    public TeacherDao() {
+        connection=DatabaseManager.getManager().getConnection();
     }
+
     @Override
     public List<Teacher> findAll() {
         return null;

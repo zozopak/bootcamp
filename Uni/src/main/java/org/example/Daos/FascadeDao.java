@@ -1,15 +1,18 @@
 package org.example.Daos;
 
+import org.example.controller.Observable;
+import org.example.controller.Observer;
+
 import java.sql.Connection;
 
 public class FascadeDao {
     private final CourseDao courseDao;
     private final TeacherDao teacherDao;
     private final StudentDao studentDao;
-    public FascadeDao(Connection connection){
-        courseDao=new CourseDao(connection);
-        teacherDao=new TeacherDao(connection);
-        studentDao=new StudentDao(connection);
+    public FascadeDao(){
+        courseDao=new CourseDao();
+        teacherDao=new TeacherDao();
+        studentDao=new StudentDao();
     }
 
     public CourseDao getCourseDao() {
@@ -23,4 +26,6 @@ public class FascadeDao {
     public StudentDao getStudentDao() {
         return studentDao;
     }
+
+
 }

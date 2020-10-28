@@ -5,19 +5,31 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseManager {
-   private static  Connection connection = null;
-   private DatabaseManager() {
+    private final static String URL = "jdbc:mysql://localhost:3306/uni";
+    private final static String PASSWORD = "12345";
+    private final static String USERNAME = "root";
 
-   }
-   public  static Connection getInstance(){
-       try {
-           if(connection !=null) {
-               connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test");
+    private Connection connection;
 
-           }
-       } catch (SQLException throwables) {
-           throwables.printStackTrace();
-       }
-       return connection;
-   }
+    private static DatabaseManager databaseManager = null;
+
+    private DatabaseManager() {
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public static DatabaseManager getManager() {
+        if (databaseManager == null) {
+            databaseManager = new DatabaseManager();
+        }
+        return databaseManager;
+    }
 }
